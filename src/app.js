@@ -13,6 +13,7 @@ import {FleetDataService} from './services/fleet-data-service.js';
 import {ApplicationBase} from './framework/application-base.js';
 import {HomePage} from './home-page.js';
 import {CarsPage} from './cars-page.js';
+import {MapPage} from './map-page.js';
 
 // for creating our specific App based on this framework we want to create
 // a class for it(like React does) then in body call constructor, super()
@@ -40,7 +41,7 @@ export class App extends ApplicationBase {
     this.addRoute('Home', new HomePage(), true);
     this.addRoute('Cars', new CarsPage());
     this.addRoute('Drones', null);
-    this.addRoute('Map', null);
+    this.addRoute('Map', new MapPage());
 
   }
 }

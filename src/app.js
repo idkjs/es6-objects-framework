@@ -30,6 +30,15 @@ export class App extends ApplicationBase {
     this.dataService = new FleetDataService();
     this.dataService.loadData(fleet);
 
+    // lets create an addRoute method on parent class (ApplicationBase)
+    //  to be our router for links with 3 params:
+    // 1. the name, 2. the object we want it to go to, 3. optional boolean for if route
+    // is default route or not.
+    this.addRoute('Home', null, true);
+    this.addRoute('Cars', null);
+    this.addRoute('Drones', null);
+    this.addRoute('Map', null);
+
   }
 }
 

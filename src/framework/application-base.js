@@ -13,6 +13,32 @@ export class ApplicationBase {
   constructor(title) {
     this.title = title;
     this.titleBar = new TitleBar(this.title);
+    // remember that constructor is where we keep local state.
+    // Here we create the state for our routes with a routeMap object which
+    // will hold all the routes passed to our application as key value pairs.
+    // id is key, pageObject is value.
+    this.routeMap = {};
+    // set defaultRoute state to null. this will update if any route get created
+    // with 3rd param set to true.
+    this.defaultRoute = null;
+
+  }
+
+  // create addRoute method for all of the apps to be able to access
+// we define addRoute as taking to params and a third which default to false.
+// if we pass this from and another class it will override the default. We will
+// pass in the name of the route as id and where we want it to go as object.
+// addLink is a method on titleBar which we imported above that adds passed link
+// to the array of links to be displayed in the title bar.
+  addRoute(id, pageObject, defaultRoute = false) {
+    this.titleBar.addLink(id, '');
+    // takes the id and pageObject and add to routeMap object as key:value pair
+    this.routeMap[id] = pageObject;
+    // if default route is set to true, set state for default route to the id
+    // of the route passing in true.
+    if(defaultRoute) {
+      this.defaultRoute = id;
+    }
   }
 // this method allows us to attach any extended application base in the dom 
 // by calling show and passing in the DOM element we want the class object to show

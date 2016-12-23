@@ -24,6 +24,22 @@ export class ApplicationBase {
 
   }
 
+// activateRoute method taking passed in defaultRoute as route param.
+// set a local var 'content' equal to the element in titleBar that is called 
+//  .page-content. we call the jquery find ment on the titleBar element
+// see: <https://api.jquery.com/find/#find-element> this searches the dom tree
+//  for the passed in element, here titleBar, and searches for .page-content.
+// then we call jquery's empty method on it to remove all child node for the 
+// returned element. see: <https://api.jquery.com/empty/>
+activateRoute(route) {
+  let content = this.titleBar.element.find('.page-content');
+  content.empty();
+//  get the route passed in to activateRoute, find it in the routeMap key:value
+// store, and append it to the dom at .page-content. Our mdl template code
+// has a page-content class on it, so that is what we are targeting.
+  this.routeMap[route].appendToElement(content);
+}
+
   // create addRoute method for all of the apps to be able to access
 // we define addRoute as taking to params and a third which default to false.
 // if we pass this from and another class it will override the default. We will
@@ -45,5 +61,10 @@ export class ApplicationBase {
 //  on like body, main, or some element id.
   show(element) {
     this.titleBar.appendToElement(element);
+// add check for defualt route. if default route is true activate that route.
+// add activate route method above.
+    if (this.defaultRoute) {
+      this.activateRoute(this.defaultRoute);
+    }
   }
 }

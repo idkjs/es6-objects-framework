@@ -11,6 +11,7 @@ import {FleetDataService} from './services/fleet-data-service.js';
 // import {DataTable} from './ui/data-table.js';
 // import {GoogleMap} from './ui/google-map.js';
 import {ApplicationBase} from './framework/application-base.js';
+import {HomePage} from './home-page.js';
 
 // for creating our specific App based on this framework we want to create
 // a class for it(like React does) then in body call constructor, super()
@@ -34,7 +35,8 @@ export class App extends ApplicationBase {
     //  to be our router for links with 3 params:
     // 1. the name, 2. the object we want it to go to, 3. optional boolean for if route
     // is default route or not.
-    this.addRoute('Home', null, true);
+    // TODO: add check for default route in ApplicationBase class
+    this.addRoute('Home', new HomePage(), true);
     this.addRoute('Cars', null);
     this.addRoute('Drones', null);
     this.addRoute('Map', null);

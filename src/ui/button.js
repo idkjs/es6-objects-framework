@@ -10,13 +10,22 @@ export class Button extends BaseElement {
     // call super to get properties of parent class
     super();
     this.title = title;
+    // create local state for styleString
+    this.styleString = '';
   }
 
+// add interpolated styleString method to button style classes
+// style is from html api. see:<http://www.w3schools.com/tags/tag_style.asp>
   getElementString() {
     return `
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="${this.styleString}">
           ${this.title}
         </button>
     `;
+  }
+  // create setStyleString() so we can call it from homepage.js where we are styling
+  // our button.
+  setStyleString(style) {
+    this.styleString = style;
   }
 }

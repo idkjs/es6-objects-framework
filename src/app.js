@@ -12,6 +12,7 @@ import {FleetDataService} from './services/fleet-data-service.js';
 // import {GoogleMap} from './ui/google-map.js';
 import {ApplicationBase} from './framework/application-base.js';
 import {HomePage} from './home-page.js';
+import {CarsPage} from './cars-page.js';
 
 // for creating our specific App based on this framework we want to create
 // a class for it(like React does) then in body call constructor, super()
@@ -37,7 +38,7 @@ export class App extends ApplicationBase {
     // is default route or not.
     // TODO: add check for default route in ApplicationBase class
     this.addRoute('Home', new HomePage(), true);
-    this.addRoute('Cars', null);
+    this.addRoute('Cars', new CarsPage());
     this.addRoute('Drones', null);
     this.addRoute('Map', null);
 

@@ -34,8 +34,11 @@ export class TitleBar extends BaseElement {
     // instead of hard coding them.
 
     for (let link of this.links)
-        links += `<a class="mdl-navigation__link"
-                    href="${link.href}">${link.title}</a>\n`;
+    // TODO: remove href which tells browser where to go, because we are going 
+    // to use the onClick method.
+        links += `<a class="mdl-navigation__link">
+                  ${link.title}
+                  </a>\n`;
 
     return `
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">

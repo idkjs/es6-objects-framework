@@ -61,7 +61,24 @@ activateRoute(route) {
 //  on like body, main, or some element id.
   show(element) {
     this.titleBar.appendToElement(element);
-// add check for defualt route. if default route is true activate that route.
+
+    // TODO: add click handlers to show method to trigger clickEvents.
+    // similarly to how we found page-content in the mdl page template to get the
+    //  child node we can do the same to get the child node in titleBar to get
+    //  the mdl-navigation link element and call onClick on it.
+    // Using the fat arrow gets us access to local this context which is the 
+    // instance of this class. Note: the link part is coming from the interpolated
+    // link reference.
+    this.titleBar.element.find('.mdl-navigation__link').click((event) => {
+      // create local variable for the route we are getting
+      let route = event.target.innerHTML;
+      // call activateRoute from parent class on the returned route
+      // add .trim method to route property to remove any leading or trailing 
+      // whitespace around route value because whitespace in route is causing
+      // link not to click.
+      this.activateRoute(route.trim());
+    })
+// add check for default route. if default route is true activate that route.
 // add activate route method above.
     if (this.defaultRoute) {
       this.activateRoute(this.defaultRoute);

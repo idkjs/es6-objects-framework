@@ -1,12 +1,12 @@
-import {BaseElement} from './ui/base-element.js';
+import {Page} from './framework/page.js';
 import {Image} from './ui/image.js';
 import {Button} from './ui/button.js';
 import {application} from './app.js';
 
-export class HomePage extends BaseElement {
-    
+export class HomePage extends Page {
+    // pass name of page to super() as required by page class.
     constructor() {
-        super();
+        super('Home');
     }
     
     createElement() {
@@ -29,13 +29,13 @@ export class HomePage extends BaseElement {
         b.setStyleString(styleString);
         b.appendToElement(this.element);
         // TODO: create activeRoute method
-        //b.element.click(() => application.activateRoute('Cars'));
+        b.element.click(() => application.activateRoute('Cars'));
         
         b = new Button('Drones');
         b.setStyleString(styleString);
         b.appendToElement(this.element);
         // TODO: create activeRoute method
-        //b.element.click(() => application.activateRoute('Drones'));
+        b.element.click(() => application.activateRoute('Drones'));
     }
     
     getElementString() {
